@@ -35,10 +35,11 @@ class CarManager:
 
     def create_cars(self):
         random_chance = random.randint(1, 7)
-        if random_chance == 1 and len(self.all_lanes) < 16:
+        if random_chance == 1:
             new_car = Turtle('square')
             new_car.shapesize(stretch_wid=1, stretch_len=2)
             new_car.penup()
+            new_car.hitbox = 18
             new_car.color(random.choice(COLORS))
             random_y = random.choice(LANESCOORD)
             new_heading, x_coord = self.set_direction(random_y)

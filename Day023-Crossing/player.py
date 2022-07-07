@@ -8,8 +8,8 @@ class Player(Turtle):
     
     def __init__(self):
         super().__init__()
-        self.x_coord = 0
-        self.y_coord = -220
+        self.x_coord = STARTING_POSITION[0]
+        self.y_coord = STARTING_POSITION[1]
         self.hixbox = MOVE_DISTANCE / 2
         self.lives = 6
         self.penup()
@@ -20,10 +20,24 @@ class Player(Turtle):
     
     def reset_player(self):
         self.seth(90)
+        self.color('black', 'sea green')
         self.goto(STARTING_POSITION)
+        self.x_coord = self.pos()[0]
+        self.y_coord = self.pos()[1]
+
+    def hit_by_car(self):
+        self.color('black', 'red')
+        self.stamp()
+        self.reset_player()
+
+    def has_crossed(self):
+        self.color('black', 'dark green')
+        self.stamp()
+        self.reset_player()
 
     def move(self):
         self.goto(self.x_coord, self.y_coord)
+        print(self.pos())
 
     def move_up(self):
         self.seth(90)

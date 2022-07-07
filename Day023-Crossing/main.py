@@ -9,9 +9,11 @@ screen = Screen()
 screen.bgcolor('black')
 screen.setup(width=480, height=640)
 screen.tracer(0)
-player_turtle = Player()
-background = BackGround()
+
 cars = CarManager()
+background = BackGround()
+player_turtle = Player()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkeypress(fun=player_turtle.move_up, key='Up')
@@ -25,11 +27,18 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    cars.create_cars()
+    if len(cars.all_lanes) < 15:
+        cars.create_cars()
     if len(cars.all_lanes) > 1:
         cars.populate_lane()
     cars.move_cars()
 
+    if player_turtle.ycor() >= 180:
+        player_turtle.has_crossed()
+        scoreboard.player_score += 1
+    for car in cars.all_lanes:
+        if player_turtle.distance(car) < 20:
+            player_turtle.hit_by_car()
     loop_count += 1
 
 
