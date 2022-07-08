@@ -11,14 +11,12 @@ class Player(Turtle):
         self.x_coord = STARTING_POSITION[0]
         self.y_coord = STARTING_POSITION[1]
         self.hixbox = MOVE_DISTANCE / 2
-        self.lives = 6
-        self.penup()
         self.shape('turtle')
-        self.turtlesize(outline= 0.4)
-        self.color('black', 'sea green')
+        self.penup()
         self.reset_player()
-    
+
     def reset_player(self):
+        self.turtlesize(1, 1, 0.4)
         self.seth(90)
         self.color('black', 'sea green')
         self.goto(STARTING_POSITION)

@@ -36,9 +36,15 @@ while game_is_on:
     if player_turtle.ycor() >= 180:
         player_turtle.has_crossed()
         scoreboard.player_score += 1
+        scoreboard.update_score()
+    elif scoreboard.player_lives == -1:
+        scoreboard.game_over()
+        game_is_on = False
     for car in cars.all_lanes:
-        if player_turtle.distance(car) < 20:
+        if player_turtle.distance(car) < 28:
             player_turtle.hit_by_car()
+            scoreboard.player_lives -= 1
+            scoreboard.update_score()
     loop_count += 1
 
 

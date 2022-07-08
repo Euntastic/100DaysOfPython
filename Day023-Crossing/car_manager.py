@@ -39,7 +39,6 @@ class CarManager:
             new_car = Turtle('square')
             new_car.shapesize(stretch_wid=1, stretch_len=2)
             new_car.penup()
-            new_car.hitbox = 18
             new_car.color(random.choice(COLORS))
             random_y = random.choice(LANESCOORD)
             new_heading, x_coord = self.set_direction(random_y)
