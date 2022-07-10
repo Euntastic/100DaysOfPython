@@ -7,8 +7,9 @@ class ScoreBoard(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.hideturtle()
         self.score = 0
+        
+        self.hideturtle()
         with open("hiscore.txt") as data:
             self.high_score = int(data.read())
         self.penup()
